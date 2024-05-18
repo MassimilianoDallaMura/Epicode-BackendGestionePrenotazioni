@@ -32,7 +32,6 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(GestionePrenotazioniApplication.class);
 
-        // Salva edifici
         Edificio edificioA = ctx.getBean("EdificioA", Edificio.class);
         Edificio edificioB = ctx.getBean("EdificioB", Edificio.class);
         Edificio edificioC = ctx.getBean("EdificioC", Edificio.class);
@@ -45,11 +44,10 @@ public class Runner implements CommandLineRunner {
         edificioService.inserisciEdificio(edificioD);
         edificioService.inserisciEdificio(edificioE);
 
-        // Salva utenti
         Utente utente1 = ctx.getBean("Azzurra", Utente.class);
         utenteService.inserisciUtente(utente1);
 
-        // Aggiungi altri salvataggi se necessario
+
     }
 }
 
