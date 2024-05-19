@@ -17,7 +17,15 @@ public class Postazione {
     @Enumerated(EnumType.STRING)
     private TipoPostazione tipo;
     private int numeroMassimoOccupanti;
+    @Column()
+    private boolean libera = true;;
     @ManyToOne
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
+
+    @Override
+    public String toString() {
+        return STR."Postazione{id=\{id}, codice='\{codice}\{'\''}, descrizione='\{descrizione}\{'\''}, tipo=\{tipo}, numeroMassimoOccupanti=\{numeroMassimoOccupanti}, libera=\{libera}\{'}'}";
+    }
+
 }

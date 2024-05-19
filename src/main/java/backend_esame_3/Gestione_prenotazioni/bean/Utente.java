@@ -17,6 +17,7 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
+    private String codicePrenotazione;
     @ManyToOne
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;

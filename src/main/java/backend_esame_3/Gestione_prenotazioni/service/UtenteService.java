@@ -29,6 +29,11 @@ public class UtenteService {
         utenteRepository.findAll();
         return List.of();
     }
+
+
+    public Optional<Utente> getUtenteByUsername(String username) {
+        return utenteRepository.findByUsername(username);
+    }
 }
 
 

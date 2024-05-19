@@ -3,29 +3,18 @@ package backend_esame_3.Gestione_prenotazioni.appConfig;
 
 import backend_esame_3.Gestione_prenotazioni.bean.Edificio;
 import backend_esame_3.Gestione_prenotazioni.bean.Postazione;
-import backend_esame_3.Gestione_prenotazioni.bean.Prenotazione;
+
 import backend_esame_3.Gestione_prenotazioni.bean.Utente;
 import backend_esame_3.Gestione_prenotazioni.enums.TipoPostazione;
-import backend_esame_3.Gestione_prenotazioni.repositiry.EdificioRepository;
-import backend_esame_3.Gestione_prenotazioni.repositiry.PostazioneRepository;
-import backend_esame_3.Gestione_prenotazioni.repositiry.PrenotazioneRepository;
-import backend_esame_3.Gestione_prenotazioni.repositiry.UtenteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-import org.springframework.context.annotation.PropertySource;
-
+import org.springframework.context.annotation.*;
 
 
 @Configuration
-@PropertySource("application.properties")
 public class AppConfig {
         @Bean("EdificioA")
-//        @Primary
-        public Edificio edificioA(){
+        @Primary
+        public Edificio getEdificioA(){
             Edificio edificioA = new Edificio();
             edificioA.setNome("EdificioA");
             edificioA.setIndirizzo("Via Roma 1");
@@ -36,7 +25,7 @@ public class AppConfig {
 
 
         @Bean("EdificioB")
-        public Edificio edificioB(){
+        public Edificio getEdificioB(){
             Edificio edificioB = new Edificio();
             edificioB.setNome("EdificioB");
             edificioB.setIndirizzo("Via Siracusa 4");
@@ -46,16 +35,16 @@ public class AppConfig {
 
 
         @Bean("EdificioC")
-        public Edificio edificioC(){
+        public Edificio getEdificioC(){
             Edificio edificioC = new Edificio();
             edificioC.setNome("EdificioC");
             edificioC.setIndirizzo("Via Torrepiano 20");
-            edificioC().setCitta("Verona");
+            edificioC.setCitta("Verona");
             return edificioC;
         }
 
         @Bean("EdificioD")
-        public Edificio edificioD(){
+        public Edificio getEdificioD(){
             Edificio edificioD = new Edificio();
             edificioD.setNome("EdificioD");
             edificioD.setIndirizzo("Via Civetta 9");
@@ -64,7 +53,7 @@ public class AppConfig {
         }
 
         @Bean("EdificioE")
-        public Edificio edificioE(){
+        public Edificio getEdificioE(){
             Edificio edificioE = new Edificio();
             edificioE.setNome("EdificioB");
             edificioE.setIndirizzo("Via Siracusa 4");
@@ -74,74 +63,74 @@ public class AppConfig {
 
 
         @Bean("DellaScala")
-        public Postazione dellascala(){
+        public Postazione getDellascala(){
             Postazione dellascala = new Postazione();
             dellascala.setCodice("369a098");
             dellascala.setDescrizione("Postazione openspace");
             dellascala.setTipo(TipoPostazione.OPENSPACE);
             dellascala.setNumeroMassimoOccupanti(10);
-            dellascala.setEdificio(edificioC());
+            dellascala.setEdificio(getEdificioC());
             return dellascala;
         }
 
         @Bean("Savoia")
-        public Postazione savoia(){
+        public Postazione getSavoia(){
             Postazione savoia= new Postazione();
             savoia.setCodice("139a544");
             savoia.setDescrizione("Postazione openspace");
             savoia.setTipo(TipoPostazione.OPENSPACE);
             savoia.setNumeroMassimoOccupanti(12);
-            savoia.setEdificio(edificioA());
+            savoia.setEdificio(getEdificioA());
             return savoia;
         }
 
         @Bean("Vittorio Emanuele")
-        public Postazione vittorioemanuele(){
+        public Postazione getVittorioemanuele(){
             Postazione vittorioemanuele= new Postazione();
-            vittorioemanuele.setCodice("139a544");
+            vittorioemanuele.setCodice("998a102");
             vittorioemanuele.setDescrizione("Postazione openspace");
             vittorioemanuele.setTipo(TipoPostazione.OPENSPACE);
             vittorioemanuele.setNumeroMassimoOccupanti(8);
-            vittorioemanuele.setEdificio(edificioB());
+            vittorioemanuele.setEdificio(getEdificioB());
             return vittorioemanuele;
         }
 
 
         @Bean("Preistoria")
-        public Postazione preistoria(){
+        public Postazione getPreistoria(){
             Postazione preistoria = new Postazione();
             preistoria.setCodice("019d292");
             preistoria.setDescrizione("Postazioni openspace");
             preistoria.setTipo(TipoPostazione.OPENSPACE);
             preistoria.setNumeroMassimoOccupanti(10);
-            preistoria.setEdificio(edificioD());
+            preistoria.setEdificio(getEdificioD());
             return preistoria;
         }
 
         @Bean("Medioevo")
-        public Postazione medioevo(){
+        public Postazione getMedioevo(){
             Postazione medioevo = new Postazione();
             medioevo.setCodice("722f893");
             medioevo.setDescrizione("Postazioni per riunioni");
             medioevo.setTipo(TipoPostazione.SALA_RIUNIONI);
             medioevo.setNumeroMassimoOccupanti(20);
-            medioevo.setEdificio(edificioE());
+            medioevo.setEdificio(getEdificioE());
            return medioevo;
         }
 
         @Bean("Rinascimento")
-        public Postazione rinascimento(){
+        public Postazione getRinascimento(){
             Postazione rinascimento = new Postazione();
             rinascimento.setCodice("722f893");
             rinascimento.setDescrizione("Postazioni private");
             rinascimento.setTipo(TipoPostazione.PRIVATO);
             rinascimento.setNumeroMassimoOccupanti(2);
-            rinascimento.setEdificio(edificioE());
+            rinascimento.setEdificio(getEdificioE());
             return rinascimento;
         }
 
     @Bean("Azzurra")
-    public Utente azzurra(){
+    public Utente getAzzurra(){
         Utente azzurra = new Utente();
         azzurra.setUsername("AzzurraBianchi");
         azzurra.setNome("Azzurra");
@@ -151,7 +140,7 @@ public class AppConfig {
     }
 
     @Bean("Marrone")
-    public Utente marrone(){
+    public Utente getMarrone(){
         Utente marrone = new Utente();
         marrone.setUsername("MarroneNeri");
         marrone.setNome("Marrone");
@@ -161,7 +150,7 @@ public class AppConfig {
     }
 
     @Bean("Celeste")
-    public Utente celeste(){
+    public Utente getCeleste(){
         Utente celeste = new Utente();
         celeste.setUsername("CelesteVerdi");
         celeste.setNome("Celeste");

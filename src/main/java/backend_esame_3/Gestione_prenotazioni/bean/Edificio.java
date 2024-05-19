@@ -17,8 +17,9 @@ public class Edificio {
     private String indirizzo;
     private String citta;
 
-    @OneToMany(mappedBy = "edificio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "edificio", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Postazione> postazioni;
+
     @OneToMany(mappedBy = "edificio", cascade = CascadeType.ALL)
     private List<Utente> utente;
 
