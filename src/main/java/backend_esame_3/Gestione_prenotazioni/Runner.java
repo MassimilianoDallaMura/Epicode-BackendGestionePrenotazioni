@@ -1,6 +1,7 @@
 package backend_esame_3.Gestione_prenotazioni;
 import backend_esame_3.Gestione_prenotazioni.bean.Edificio;
 import backend_esame_3.Gestione_prenotazioni.bean.Postazione;
+import backend_esame_3.Gestione_prenotazioni.bean.Prenotazione;
 import backend_esame_3.Gestione_prenotazioni.bean.Utente;
 import backend_esame_3.Gestione_prenotazioni.enums.TipoPostazione;
 import backend_esame_3.Gestione_prenotazioni.service.EdificioService;
@@ -138,18 +139,29 @@ public class Runner implements CommandLineRunner {
                         .findFirst()
                         .orElse(null);
 
-                System.out.println("Inserisci la data di prenotazione (AAAA-MM-GG):");
-                String dataPrenotazioneString = scanner.next();
-                LocalDate dataPrenotazione = LocalDate.parse(dataPrenotazioneString);
-
                 if (postazioneSelezionata != null) {
-                    // Effettua la prenotazione senza richiedere il codice prenotazione
-                    prenotazioneService.prenotaPostazione(postazioneSelezionata, utente, dataPrenotazione);
+                    boolean dataValida = false;
+                    LocalDate dataPrenotazione = null;
 
+                    while (!dataValida) {
+                        System.out.println("Inserisci la data di prenotazione (AAAA-MM-GG):");
+                        String dataPrenotazioneString = scanner.next();
+                        dataPrenotazione = LocalDate.parse(dataPrenotazioneString);
+
+                        List<Prenotazione> prenotazioniUtente = prenotazioneService.getPrenotazioniByDataAndUtente(dataPrenotazione, utente);
+
+                        if (prenotazioniUtente.isEmpty()) {
+                            dataValida = true;
+                        } else {
+                            System.out.println("Hai già una prenotazione per questa data. Inserisci un'altra data.");
+                        }
+                    }
+
+                    // Effettua la prenotazione
+                    prenotazioneService.prenotaPostazione(postazioneSelezionata, utente, dataPrenotazione);
                 } else {
                     System.out.println("Postazione non valida.");
                 }
-
             } else {
                 System.out.println("Nessuna postazione disponibile in base alla selezione.");
             }

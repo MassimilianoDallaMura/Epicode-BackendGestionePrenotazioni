@@ -104,4 +104,8 @@ public class PrenotazioneService {
             System.out.println("Postazione o Utente non trovato.");
         }
     }
+
+    public List<Prenotazione> getPrenotazioniByDataAndUtente(LocalDate data, Utente utente) {
+        return prenotazioneRepository.findByDataAndUtente(data, utente);
+    }
 }
