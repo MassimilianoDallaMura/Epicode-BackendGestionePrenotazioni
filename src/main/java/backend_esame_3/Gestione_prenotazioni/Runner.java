@@ -99,13 +99,17 @@ public class Runner implements CommandLineRunner {
 
             // Visualizza le città disponibili
             System.out.println("Città disponibili:");
-            for (String citta : cittaDisponibili) {
-                System.out.println("- " + citta);
+            for (int i = 0; i < cittaDisponibili.size(); i++) {
+                String citta = cittaDisponibili.get(i);
+                System.out.println(STR."\{i + 1}. \{citta}"); // ((i + 1) + ". " + citta)
             }
 
             // Richiesta della città desiderata
-            System.out.println("Inserisci la città desiderata:");
-            String citta = scanner.next();
+            System.out.println("Inserisci il numero corrispondente alla città desiderata:");
+            int sceltaCitta = scanner.nextInt();
+            // Verifica se l'input dell'utente è valido
+            if (sceltaCitta >= 1 && sceltaCitta <= cittaDisponibili.size()) {
+                String citta = cittaDisponibili.get(sceltaCitta - 1);
 
             // Recupera i tipi di postazione disponibili per la città selezionata
             List<TipoPostazione> tipiPostazioneDisponibili = postazioneService.getTipiPostazioneDisponibiliPerCitta(citta);
@@ -116,13 +120,14 @@ public class Runner implements CommandLineRunner {
                 System.out.println("- " + tipo);
             }
 
+
             // Chiede il tipo di postazione desiderato
             System.out.println("Inserisci il tipo di postazione desiderato:");
             String tipoPostazioneString = scanner.next();
             TipoPostazione tipoPostazione = TipoPostazione.valueOf(tipoPostazioneString.toUpperCase());
 
             // Trova le postazioni disponibili in base alla città e al tipo desiderati
-            LocalDate data = LocalDate.now(); // Puoi impostare una data specifica se necessario
+            LocalDate data = LocalDate.now();
             List<Postazione> postazioniDisponibili = postazioneService.trovaPostazioniPerTipoECitta(tipoPostazione, citta, data);
 
             if (!postazioniDisponibili.isEmpty()) {
@@ -169,6 +174,7 @@ public class Runner implements CommandLineRunner {
             System.out.println("Utente non trovato.");
         }
     }
+}
 }
 
 

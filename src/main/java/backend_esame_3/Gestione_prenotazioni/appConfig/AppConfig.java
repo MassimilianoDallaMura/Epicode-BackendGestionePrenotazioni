@@ -55,7 +55,7 @@ public class AppConfig {
         @Bean("EdificioE")
         public Edificio getEdificioE(){
             Edificio edificioE = new Edificio();
-            edificioE.setNome("EdificioB");
+            edificioE.setNome("EdificioE");
             edificioE.setIndirizzo("Via Siracusa 4");
             edificioE.setCitta("Firenze");
             return edificioE;

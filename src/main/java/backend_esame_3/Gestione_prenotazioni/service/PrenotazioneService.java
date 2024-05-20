@@ -63,6 +63,7 @@ public class PrenotazioneService {
             List<Prenotazione> prenotazioniEsistenti = prenotazioneRepository.findByDataAndPostazione(dataPrenotazione, postazione);
             if (!prenotazioniEsistenti.isEmpty()) {
                 System.out.println("La postazione è già prenotata per la data selezionata.");
+
                 return;
             }
             Prenotazione prenotazione = new Prenotazione();
