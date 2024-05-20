@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PrenotazioneService {
@@ -49,8 +50,16 @@ public class PrenotazioneService {
     }
 
     @Transactional
-    public void prenotaPostazione(Postazione postazione, Utente utente, LocalDate dataPrenotazione, String codicePrenotazione) {
+    public void prenotaPostazione(Postazione postazione, Utente utente, LocalDate dataPrenotazione) {
         if (postazione != null && utente != null) {
+
+            // Controlla se l'utente ha già una prenotazione per la stessa data
+            List<Prenotazione> prenotazioniUtente = prenotazioneRepository.findByDataAndUtente(dataPrenotazione, utente);
+            if (!prenotazioniUtente.isEmpty()) {
+                System.out.println("L'utente ha già una prenotazione per questa data.");
+                return;
+            }
+            // Controlla se la postazione è già prenotata per la stessa data
             List<Prenotazione> prenotazioniEsistenti = prenotazioneRepository.findByDataAndPostazione(dataPrenotazione, postazione);
             if (!prenotazioniEsistenti.isEmpty()) {
                 System.out.println("La postazione è già prenotata per la data selezionata.");
@@ -67,6 +76,9 @@ public class PrenotazioneService {
 
             // Aggiorna lo stato della postazione
             postazione.setLibera(false);
+
+            // Genera un codice prenotazione unico
+            String codicePrenotazione = UUID.randomUUID().toString();
 
             // Recupera i codici prenotazione attuali dell'utente
             List<String> codiciUtente = utente.getCodicePrenotazioneList();

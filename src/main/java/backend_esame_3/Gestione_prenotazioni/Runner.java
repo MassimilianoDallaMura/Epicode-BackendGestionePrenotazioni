@@ -120,8 +120,6 @@ public class Runner implements CommandLineRunner {
             String tipoPostazioneString = scanner.next();
             TipoPostazione tipoPostazione = TipoPostazione.valueOf(tipoPostazioneString.toUpperCase());
 
-
-
             // Trova le postazioni disponibili in base alla città e al tipo desiderati
             LocalDate data = LocalDate.now(); // Puoi impostare una data specifica se necessario
             List<Postazione> postazioniDisponibili = postazioneService.trovaPostazioniPerTipoECitta(tipoPostazione, citta, data);
@@ -144,13 +142,9 @@ public class Runner implements CommandLineRunner {
                 String dataPrenotazioneString = scanner.next();
                 LocalDate dataPrenotazione = LocalDate.parse(dataPrenotazioneString);
 
-                System.out.println("Inserisci il codice della prenotazione:");
-                String codicePrenotazione = scanner.next();
-
-
                 if (postazioneSelezionata != null) {
-                    // Effettua la prenotazione
-                    prenotazioneService.prenotaPostazione(postazioneSelezionata, utente, dataPrenotazione, codicePrenotazione);
+                    // Effettua la prenotazione senza richiedere il codice prenotazione
+                    prenotazioneService.prenotaPostazione(postazioneSelezionata, utente, dataPrenotazione);
 
                 } else {
                     System.out.println("Postazione non valida.");
@@ -162,9 +156,9 @@ public class Runner implements CommandLineRunner {
         } else {
             System.out.println("Utente non trovato.");
         }
-
     }
 }
+
 
 
 

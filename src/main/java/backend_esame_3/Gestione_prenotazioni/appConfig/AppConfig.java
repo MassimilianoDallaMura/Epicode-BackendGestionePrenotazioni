@@ -121,7 +121,7 @@ public class AppConfig {
         @Bean("Rinascimento")
         public Postazione getRinascimento(){
             Postazione rinascimento = new Postazione();
-            rinascimento.setCodice("722f893");
+            rinascimento.setCodice("732h112");
             rinascimento.setDescrizione("Postazioni private");
             rinascimento.setTipo(TipoPostazione.PRIVATO);
             rinascimento.setNumeroMassimoOccupanti(2);
