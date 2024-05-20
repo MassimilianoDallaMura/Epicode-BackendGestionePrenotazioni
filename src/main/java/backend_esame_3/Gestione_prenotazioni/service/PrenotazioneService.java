@@ -51,6 +51,11 @@ public class PrenotazioneService {
     @Transactional
     public void prenotaPostazione(Postazione postazione, Utente utente, LocalDate dataPrenotazione, String codicePrenotazione) {
         if (postazione != null && utente != null) {
+            List<Prenotazione> prenotazioniEsistenti = prenotazioneRepository.findByDataAndPostazione(dataPrenotazione, postazione);
+            if (!prenotazioniEsistenti.isEmpty()) {
+                System.out.println("La postazione è già prenotata per la data selezionata.");
+                return;
+            }
             Prenotazione prenotazione = new Prenotazione();
             prenotazione.setDataPrenotazione(dataPrenotazione);
             prenotazione.setPostazione(postazione);
@@ -63,9 +68,17 @@ public class PrenotazioneService {
             // Aggiorna lo stato della postazione
             postazione.setLibera(false);
 
-            // Imposta il codice della prenotazione per l'utente
-            utente.setCodicePrenotazione(codicePrenotazione);
-            prenotazione.setCodicePrenotazione(Collections.singletonList(codicePrenotazione));
+            // Recupera i codici prenotazione attuali dell'utente
+            List<String> codiciUtente = utente.getCodicePrenotazioneList();
+
+            // Aggiungi il nuovo codice prenotazione alla lista esistente
+            codiciUtente.add(codicePrenotazione);
+
+            // Aggiorna la colonna della tabella Utente con la lista aggiornata di codici prenotazione
+            utente.setCodicePrenotazioneList(codiciUtente);
+
+            // Imposta il codice della prenotazione per la prenotazione
+            prenotazione.setCodicePrenotazione(codicePrenotazione);
 
             // Salva la prenotazione e aggiorna la postazione
             prenotazioneRepository.save(prenotazione);

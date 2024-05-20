@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long> {
     List<Prenotazione> findByDataAndPostazione(LocalDate data, Postazione postazione);
+
+//    List<Prenotazione> findByDataPrenotazioneAndPostazione(LocalDate dataPrenotazione, Postazione postazione);
 }

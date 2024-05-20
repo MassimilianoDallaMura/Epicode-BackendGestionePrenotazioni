@@ -5,6 +5,8 @@ import backend_esame_3.Gestione_prenotazioni.enums.TipoPostazione;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name= "postazioni")
@@ -22,6 +24,8 @@ public class Postazione {
     @ManyToOne
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
+    @OneToMany(mappedBy = "postazione")
+    private List<Prenotazione> prenotazioni;
 
     @Override
     public String toString() {

@@ -7,8 +7,6 @@ import backend_esame_3.Gestione_prenotazioni.repositiry.PostazioneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
-
-import java.security.PublicKey;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
