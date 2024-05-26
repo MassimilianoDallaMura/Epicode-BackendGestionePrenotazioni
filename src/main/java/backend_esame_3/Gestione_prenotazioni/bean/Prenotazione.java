@@ -40,15 +40,15 @@ public class Prenotazione {
     }
 
     // Metodi per gestire la conversione tra lista e stringa
-    public List<String> getCodicePrenotazioneList() {
-        if (codicePrenotazione != null && !codicePrenotazione.isEmpty()) {
-            return Arrays.asList(codicePrenotazione.split(","));
-        } else {
-            return List.of();
-        }
-    }
-
-    public void setCodicePrenotazioneList(List<String> codici) {
-        this.codicePrenotazione = codici.stream().collect(Collectors.joining(","));
-    }
+//    public List<String> getCodicePrenotazioneList() {
+//        if (codicePrenotazione != null && !codicePrenotazione.isEmpty()) {
+//            return Arrays.asList(codicePrenotazione.split(","));
+//        } else {
+//            return List.of();
+//        }
+//    }
+//
+//    public void setCodicePrenotazioneList(List<String> codici) {
+//        this.codicePrenotazione = codici.stream().collect(Collectors.joining(","));
+//    }
 }

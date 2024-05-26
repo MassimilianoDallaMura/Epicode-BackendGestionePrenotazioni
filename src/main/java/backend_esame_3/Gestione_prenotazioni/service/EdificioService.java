@@ -31,17 +31,17 @@ import java.util.stream.Collectors;
         edificioRepository.deleteById(id);
     }
 
-    @Transactional
-    public List<String> getCittaDisponibili() {
-        // Recupera tutti gli edifici dal repository
-        List<Edificio> edifici = edificioRepository.findAll();
-
-        // Estrai le città dai dati degli edifici
-        return edifici.stream()
-                .map(Edificio::getCitta)
-                .distinct() // Rimuovi le città duplicate
-                .collect(Collectors.toList());
-    }
+//    @Transactional
+//    public List<String> getCittaDisponibili() {
+//        // Recupera tutti gli edifici dal repository
+//        List<Edificio> edifici = edificioRepository.findAll();
+//
+//        // Estrai le città dai dati degli edifici
+//        return edifici.stream()
+//                .map(Edificio::getCitta)
+//                .distinct() // Rimuovi le città duplicate
+//                .collect(Collectors.toList());
+//    }
 }
 
 

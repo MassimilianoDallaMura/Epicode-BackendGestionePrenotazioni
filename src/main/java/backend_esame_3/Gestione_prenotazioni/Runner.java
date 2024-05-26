@@ -42,43 +42,6 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(GestionePrenotazioniApplication.class);
 
-//        Edificio edificioA = ctx.getBean("EdificioA", Edificio.class);
-//        Edificio edificioB = ctx.getBean("EdificioB", Edificio.class);
-//        Edificio edificioC = ctx.getBean("EdificioC", Edificio.class);
-//        Edificio edificioD = ctx.getBean("EdificioD", Edificio.class);
-//        Edificio edificioE = ctx.getBean("EdificioE", Edificio.class);
-//
-//        edificioService.inserisciEdificio(edificioA);
-//        edificioService.inserisciEdificio(edificioB);
-//        edificioService.inserisciEdificio(edificioC);
-//        edificioService.inserisciEdificio(edificioD);
-//        edificioService.inserisciEdificio(edificioE);
-//
-//        Postazione postazione1 = ctx.getBean("DellaScala", Postazione.class);
-//        Postazione postazione2 = ctx.getBean("Savoia", Postazione.class);
-//        Postazione postazione3 = ctx.getBean("Vittorio Emanuele", Postazione.class);
-//        Postazione postazione4 = ctx.getBean("Preistoria", Postazione.class);
-//        Postazione postazione5 = ctx.getBean("Medioevo", Postazione.class);
-//        Postazione postazione6 = ctx.getBean("Rinascimento", Postazione.class);
-//
-//        postazioneService.inserisciPostazione(postazione1);
-//        postazioneService.inserisciPostazione(postazione2);
-//        postazioneService.inserisciPostazione(postazione3);
-//        postazioneService.inserisciPostazione(postazione4);
-//        postazioneService.inserisciPostazione(postazione5);
-//        postazioneService.inserisciPostazione(postazione6);
-//
-//        Utente utente1 = ctx.getBean("Azzurra", Utente.class);
-//        Utente utente2 = ctx.getBean("Marrone", Utente.class);
-//        Utente utente3 = ctx.getBean("Celeste", Utente.class);
-//
-//
-//        utenteService.inserisciUtente(utente1);
-//        utenteService.inserisciUtente(utente2);
-//        utenteService.inserisciUtente(utente3);
-
-
-
         Scanner scanner = new Scanner(System.in);
 
 

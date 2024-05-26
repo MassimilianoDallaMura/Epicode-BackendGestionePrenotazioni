@@ -87,7 +87,7 @@ public class PrenotazioneService {
             // Aggiungi il nuovo codice prenotazione alla lista esistente
             codiciUtente.add(codicePrenotazione);
 
-            // Aggiorna la colonna della tabella Utente con la lista aggiornata di codici prenotazione
+            // Aggiorna la colonna della tabella Utente con la lista aggiornata
             utente.setCodicePrenotazioneList(codiciUtente);
 
             // Imposta il codice della prenotazione per la prenotazione
